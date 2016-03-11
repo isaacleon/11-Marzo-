@@ -1,0 +1,21 @@
+#datos entre 100 y 120, 15 datos, lo hacemos serie de tiempo, damos formato a la tabla
+pob <- sample(100:120, 15, replace=F)
+pobst <- ts (pob, frequency = 1, start=(2000))
+plot (pobst)
+plot (aggregate(pobst) ,xlab="Años", ylab="poblacion en millones", main="Población")
+#importar
+ocup<- ts(read.csv(("C:\\Users\\SALA-C22\\Downloads\\enoe.csv"), header=F), frequency = 4, start = 2005)
+plot(ocup)
+plot (aggregate(ocup), xlab="Años", main="Población Ocupada", ylab="Porcentaje de personas")
+#simular tassa desocupacion, 3 a 8, 2005, 40 datos, trimestral
+#bajar inegi tasa desocupacion, importar y comparar
+deso <- sample(3:8,44, replace = TRUE)
+desost <- ts(deso, frequency = 4, start = 2005)
+plot(desost)
+plot (aggregate(desost), xlab="Años", main="Población Desocupada", ylab="Porcentaje de personas")
+#importada
+desocup<- ts(read.csv(("C:\\Users\\SALA-C22\\Downloads\\enoe2.csv"), header=F), frequency = 4, start = 2005)
+plot(desocup)
+plot (aggregate(desocup), xlab="Años", main="Población Desocupada", ylab="Porcentaje de personas")
+plot (cbind(desost,desocup))
+layout(1:2)
